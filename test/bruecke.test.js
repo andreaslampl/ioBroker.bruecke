@@ -56,6 +56,9 @@ test('protocol: names, shares, sites, addresses', () => {
     assert.equal(P.shareFor(shares, 'spc-edp.0.areas.1.setMode').write, true, 'exact entry before pattern');
     assert.equal(P.shareFor(shares, 'spc-edp.0.areas.1.mode').write, false);
     assert.equal(P.shareFor(shares, 'spc-edp.0.zones.1.open'), null);
+    const nested = P.cleanShares([{ id: 'spc-edp.0.*' }, { id: 'spc-edp.0.areas.1.*', write: true }]);
+    assert.equal(P.shareFor(nested, 'spc-edp.0.areas.1.setMode').write, true, 'more specific folder wins');
+    assert.equal(P.shareFor(nested, 'spc-edp.0.areas.2.setMode').write, false);
     assert.equal(P.siteUrl('10.8.0.2', 8102), 'ws://10.8.0.2:8102/');
     assert.equal(P.siteUrl('10.8.0.2:9000', 8102), 'ws://10.8.0.2:9000/');
     assert.equal(P.siteUrl('salon.local', 8102), 'ws://salon.local:8102/');
@@ -111,11 +114,12 @@ async function twoSites(t, { homeKey = KEY } = {}) {
         port,
         key: KEY,
         shares: [
-            { id: 'spc-edp.0.areas.*', write: false },
+            { id: 'spc-edp.0.areas', write: false }, // folder picked in the object tree = everything below
             { id: 'spc-edp.0.areas.1.setMode', write: true },
         ],
     });
     await until(() => salonA.server && salonA.server.wss);
+    assert.ok(salonA.shares.some(x => x.id === 'spc-edp.0.areas.*'));
     const home = new FakeDb();
     const homeA = start(t, home, { name: 'Daheim', sites: [{ name: 'Friseursalon', address: `127.0.0.1:${port}`, key: homeKey }] });
     return { port, salon, salonA, home, homeA };

@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "bruecke",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "news": {
+      "0.1.1": {
+        "en": "Shares: choose data points and whole folders / channels / devices in the object tree (a folder shares everything below it); the more specific folder wins",
+        "de": "Freigaben: Datenpunkte und ganze Ordner / Kanäle / Geräte im Objektbaum auswählen (ein Ordner gibt alles darunter frei); der genauere Ordner gewinnt"
+      },
       "0.1.0": {
         "en": "First version: share chosen data points with other sites (read only or read + write), see the data points of other sites under bruecke.0.<site>, key with challenge, encrypted, reconnects by itself",
         "de": "Erste Version: ausgewählte Datenpunkte für andere Standorte freigeben (nur lesen oder lesen + schalten), Datenpunkte anderer Standorte unter bruecke.0.<standort> sehen, Schlüssel mit Gegenprüfung, verschlüsselt, verbindet sich selbst neu"

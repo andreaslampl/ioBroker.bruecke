@@ -27,7 +27,7 @@
       "items": {
         "shareHelp": {
           "type": "staticText",
-          "text": "Data points this site offers. Only these can be seen by the other sites, and only those with 'may switch' can be switched from there. A whole area: enter the folder with .* at the end, e.g. spc-edp.0.areas.*",
+          "text": "Data points this site offers - click the field to choose from the object tree. Choose a folder / channel / device to share everything below it (e.g. spc-edp.0.areas). Only these can be seen by the other sites, and only those with 'may switch' can be switched from there.",
           "xs": 12
         },
         "port": {
@@ -71,8 +71,16 @@
             {
               "type": "objectId",
               "attr": "id",
-              "title": "Data point (or folder.*)",
-              "width": "72%"
+              "title": "Data point or folder",
+              "width": "72%",
+              "customFilter": {
+                "type": [
+                  "state",
+                  "channel",
+                  "device",
+                  "folder"
+                ]
+              }
             },
             {
               "type": "checkbox",

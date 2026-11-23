@@ -5,7 +5,6 @@
   "The bridge passes chosen data points between ioBroker installations at different sites (e.g. over VPN). Every site keeps running on its own. A site that offers data points enters them under 'Share'; a site that wants to see them enters the other site under 'Sites'. Both use the same key.": "Die Brücke gibt ausgewählte Datenpunkte zwischen ioBroker-Installationen an verschiedenen Standorten weiter (z. B. über VPN). Jeder Standort läuft selbstständig weiter. Wer Datenpunkte anbietet, trägt sie unter „Freigeben“ ein; wer sie sehen will, trägt den anderen Standort unter „Standorte“ ein. Beide verwenden denselben Schlüssel.",
   "Name of this site": "Name dieses Standorts",
   "Shown at the other sites, e.g. Friseursalon": "Wird bei den anderen Standorten angezeigt, z. B. Friseursalon",
-  "Data points this site offers. Only these can be seen by the other sites, and only those with 'may switch' can be switched from there. A whole area: enter the folder with .* at the end, e.g. spc-edp.0.areas.*": "Datenpunkte, die dieser Standort anbietet. Nur diese sehen die anderen Standorte, und nur die mit „darf schalten“ können von dort geschaltet werden. Einen ganzen Bereich: den Ordner mit .* am Ende eintragen, z. B. spc-edp.0.areas.*",
   "Port": "Port",
   "The other sites connect to this port (allow it in the firewall / VPN)": "Die anderen Standorte verbinden sich mit diesem Port (in Firewall / VPN freigeben)",
   "Access key": "Zugriffsschlüssel",
@@ -14,9 +13,10 @@
   "Empty = all network cards; e.g. the VPN address so the bridge is not reachable from the LAN": "Leer = alle Netzwerkkarten; z. B. die VPN-Adresse, damit die Brücke im LAN nicht erreichbar ist",
   "Shared data points": "Freigegebene Datenpunkte",
   "On": "Ein",
-  "Data point (or folder.*)": "Datenpunkt (oder Ordner.*)",
   "may switch": "darf schalten",
   "Other sites whose shared data points should appear here (under bruecke.0.<site>.…). Address = VPN address of the ioBroker there, optional with :port (default 8102). Key = the access key set there.": "Andere Standorte, deren freigegebene Datenpunkte hier erscheinen sollen (unter bruecke.0.<standort>.…). Adresse = VPN-Adresse des ioBroker dort, optional mit :Port (Standard 8102). Schlüssel = der dort eingestellte Zugriffsschlüssel.",
   "Name": "Name",
-  "Address": "Adresse"
+  "Address": "Adresse",
+  "Data point or folder": "Datenpunkt oder Ordner",
+  "Data points this site offers - click the field to choose from the object tree. Choose a folder / channel / device to share everything below it (e.g. spc-edp.0.areas). Only these can be seen by the other sites, and only those with 'may switch' can be switched from there.": "Datenpunkte, die dieser Standort anbietet – ins Feld klicken und im Objektbaum auswählen. Einen Ordner / Kanal / Gerät wählen, um alles darunter freizugeben (z. B. spc-edp.0.areas). Nur diese sehen die anderen Standorte, und nur die mit „darf schalten“ können von dort geschaltet werden."
 }

@@ -6,7 +6,8 @@ zwischen Zuhause, Geschäft und Ferienhaus über ein VPN – ohne MQTT-Broker, o
 - **Jeder Standort bleibt selbstständig.** Die Logik läuft weiter vor Ort; fällt das VPN aus, wird nur
   `bruecke.0.<standort>.connected` falsch, die letzten Werte bleiben stehen.
 - **Freigeben:** Jeder Standort bestimmt selbst, welche Datenpunkte die anderen sehen dürfen – pro Datenpunkt
-  **nur lesen** oder **lesen + schalten**. Ganze Bereiche mit `.*` (z. B. `spc-edp.0.areas.*`).
+  **nur lesen** oder **lesen + schalten**. Auswahl im Objektbaum: einzelne Datenpunkte oder ganze Ordner / Kanäle /
+  Geräte (alles darunter, z. B. `spc-edp.0.areas`). Von Hand geht auch `spc-edp.0.areas.*`.
 - **Sehen:** Die Datenpunkte des anderen Standorts erscheinen unter `bruecke.0.<standort>.<originale ID>`, mit
   gleichem Typ, Einheit, Rolle und Texten (z. B. „Unscharf / Scharf“) – direkt nutzbar in SmartView, VIS, Logik, Blockly.
 - **Schalten:** Ein schaltbarer Datenpunkt wird hier geschrieben (ohne Bestätigung) → der Befehl geht an den anderen
@@ -32,7 +33,7 @@ iobroker url https://github.com/andreaslampl/ioBroker.bruecke
 | Allgemein | Name dieses Standorts | `Friseursalon` |
 | Freigeben | Port | `8102` |
 | Freigeben | Zugriffsschlüssel | ein langes Passwort, z. B. `Salon-Bruecke-2026!` |
-| Freigeben | Datenpunkte | `spc-edp.0.areas.*` (nur lesen) |
+| Freigeben | Datenpunkte | ins Feld klicken → im Objektbaum den Ordner `spc-edp.0.areas` wählen (nur lesen) |
 | | | `spc-edp.0.areas.1.setMode` ✔ darf schalten (falls du von zuhause scharf/unscharf schalten willst) |
 
 **Zuhause**, Instanz-Einstellungen:
@@ -76,6 +77,9 @@ Liste gelöscht, werden seine Datenpunkte hier gelöscht.
 - Die Uhren der Standorte sollten stimmen (Zeitstempel kommen vom anderen Standort).
 
 ## Changelog
+
+### 0.1.1
+- Freigaben im Objektbaum auswählen, auch ganze Ordner / Kanäle / Geräte
 
 ### 0.1.0
 - Erste Version

@@ -92,6 +92,7 @@ class Bruecke extends utils.Adapter {
     // ---------------- sharing (server) ----------------
 
     async startServer(port, key) {
+        await this.expandFolders();
         await this.collectShares();
         this.server = new BridgeServer({
             port,
@@ -123,6 +124,21 @@ class Bruecke extends utils.Adapter {
         }
     }
 
+    /** a folder / channel / device chosen in the picker = everything below it (id.*) */
+    async expandFolders() {
+        for (const s of this.shares) {
+            if (s.pattern) {
+                continue;
+            }
+            const o = await this.getForeignObjectAsync(s.id).catch(() => null);
+            if (o && o.type !== 'state') {
+                s.id = `${s.id}.*`;
+                s.pattern = true;
+            }
+        }
+        this.shares = P.cleanShares(this.shares);
+    }
+
     /** resolve the share list (patterns) into concrete state objects */
     async collectShares() {
         const found = new Map();
@@ -134,8 +150,6 @@ class Bruecke extends utils.Adapter {
                 const o = await this.getForeignObjectAsync(s.id).catch(() => null);
                 if (!o) {
                     this.log.warn(`Freigabe: Datenpunkt ${s.id} gibt es nicht`);
-                } else if (o.type !== 'state') {
-                    this.log.warn(`Freigabe: ${s.id} ist kein Datenpunkt (${o.type}) - für alles darunter ${s.id}.* eintragen`);
                 } else {
                     objs[s.id] = o;
                 }
