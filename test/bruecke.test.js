@@ -223,6 +223,21 @@ test('connection: wrong key, salon offline and back, command while offline', asy
     assert.ok(!home.objects[`${M}.setMode`], 'no longer shared there -> removed');
 });
 
+test('sharing: a whole adapter instance without an own object', async t => {
+    const port = await freePort();
+    const salon = new FakeDb();
+    salon.point('spc-edp.0.info.connection', { name: 'Verbunden', type: 'boolean', role: 'indicator.connected' }, true);
+    salon.point('spc-edp.0.zones.1.open', { name: 'Haustür', type: 'boolean', role: 'sensor.door' }, false);
+    salon.point('spc-edp.0.areas.1.setMode', { name: 'Schalten', type: 'number', role: 'level' }, 0);
+    const s = start(t, salon, { name: 'Salon', port, key: KEY, shares: [{ id: 'spc-edp.0' }, { id: 'spc-edp.0.areas.1.setMode', write: true }] });
+    await until(() => s.val('info.shared') === 3);
+    const home = new FakeDb();
+    const h = start(t, home, { name: 'Daheim', sites: [{ name: 'Salon', address: `127.0.0.1:${port}`, key: KEY }] });
+    await until(() => h.val('salon.points') === 3);
+    assert.equal(home.objects['bruecke.0.salon.spc-edp.0.zones.1.open'].common.write, false);
+    assert.equal(home.objects['bruecke.0.salon.spc-edp.0.areas.1.setMode'].common.write, true);
+});
+
 test('settings: site removed -> its objects deleted; nothing set -> warning', async t => {
     const home = new FakeDb();
     home.setObject('bruecke.0.solarium', { type: 'device', common: { name: 'Solarium' }, native: { bridgeSite: true } });

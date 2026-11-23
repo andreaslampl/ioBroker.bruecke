@@ -1,6 +1,6 @@
 {
   "name": "iobroker.bruecke",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Pass chosen data points between ioBroker installations at different sites (read only or read + write), encrypted, without MQTT broker",
   "author": "andreaslampl",
   "license": "MIT",

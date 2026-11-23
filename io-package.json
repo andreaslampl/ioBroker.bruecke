@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "bruecke",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "news": {
+      "0.1.3": {
+        "en": "Share a whole adapter instance (e.g. spc-edp.0) even though it has no object of its own",
+        "de": "Ganze Adapter-Instanz freigeben (z. B. spc-edp.0), auch wenn sie kein eigenes Objekt hat"
+      },
       "0.1.2": {
         "en": "Clearer connection errors (no answer / refused / other program on the port / DNS); log line when a site shares nothing; clear error when 'only on this address' is not an address of this computer",
         "de": "Verständlichere Verbindungsfehler (keine Antwort / abgelehnt / anderes Programm auf dem Port / DNS); Log-Zeile, wenn ein Standort nichts freigibt; klare Meldung, wenn „Nur auf dieser Adresse“ keine Adresse dieses Rechners ist"

@@ -36,6 +36,8 @@ against (shared DB, sites would depend on the VPN). Every site keeps running alo
   routed replies back. Fix: FortiGate policy Smarthome VLAN -> tunnel, TCP 8102, NAT with an overload IP pool address
   from the tunnelled home LAN (range "a-a" format). Owner had first entered the home ioBroker's own IP as bind address
   in the salon (EADDRNOTAVAIL) - bind should stay empty.
+- 0.1.3: owner asked to share whole adapters -> `expandFolders()` also turns an id without object but with states below
+  (adapter instance like spc-edp.0) into `id.*`.
 - Possible later: SmartView `fillAlarm()` only knows `spc-edp.N` / `nox_alarmzentrale.N` prefixes - mirrored alarm points
   (`bruecke.0.<site>.spc-edp.0.areas.N.*`) must be picked by hand in the tile.
 

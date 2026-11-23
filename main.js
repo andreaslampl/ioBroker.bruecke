@@ -126,14 +126,16 @@ class Bruecke extends utils.Adapter {
         }
     }
 
-    /** a folder / channel / device chosen in the picker = everything below it (id.*) */
+    /** a folder / channel / device / adapter instance = everything below it (id.*) */
     async expandFolders() {
         for (const s of this.shares) {
             if (s.pattern) {
                 continue;
             }
             const o = await this.getForeignObjectAsync(s.id).catch(() => null);
-            if (o && o.type !== 'state') {
+            // a whole adapter instance ("spc-edp.0") often has no object of its own, only objects below it
+            const below = !o && Object.keys((await this.getForeignObjectsAsync(`${s.id}.*`, 'state').catch(() => ({}))) || {}).length > 0;
+            if ((o && o.type !== 'state') || below) {
                 s.id = `${s.id}.*`;
                 s.pattern = true;
             }
