@@ -1,0 +1,22 @@
+{
+  "General": "General",
+  "Share": "Share",
+  "Sites": "Sites",
+  "The bridge passes chosen data points between ioBroker installations at different sites (e.g. over VPN). Every site keeps running on its own. A site that offers data points enters them under 'Share'; a site that wants to see them enters the other site under 'Sites'. Both use the same key.": "The bridge passes chosen data points between ioBroker installations at different sites (e.g. over VPN). Every site keeps running on its own. A site that offers data points enters them under 'Share'; a site that wants to see them enters the other site under 'Sites'. Both use the same key.",
+  "Name of this site": "Name of this site",
+  "Shown at the other sites, e.g. Friseursalon": "Shown at the other sites, e.g. Friseursalon",
+  "Data points this site offers. Only these can be seen by the other sites, and only those with 'may switch' can be switched from there. A whole area: enter the folder with .* at the end, e.g. spc-edp.0.areas.*": "Data points this site offers. Only these can be seen by the other sites, and only those with 'may switch' can be switched from there. A whole area: enter the folder with .* at the end, e.g. spc-edp.0.areas.*",
+  "Port": "Port",
+  "The other sites connect to this port (allow it in the firewall / VPN)": "The other sites connect to this port (allow it in the firewall / VPN)",
+  "Access key": "Access key",
+  "At least 8 characters; the other sites enter the same key. It never goes over the network, the data is encrypted with it.": "At least 8 characters; the other sites enter the same key. It never goes over the network, the data is encrypted with it.",
+  "Only on this address (optional)": "Only on this address (optional)",
+  "Empty = all network cards; e.g. the VPN address so the bridge is not reachable from the LAN": "Empty = all network cards; e.g. the VPN address so the bridge is not reachable from the LAN",
+  "Shared data points": "Shared data points",
+  "On": "On",
+  "Data point (or folder.*)": "Data point (or folder.*)",
+  "may switch": "may switch",
+  "Other sites whose shared data points should appear here (under bruecke.0.<site>.…). Address = VPN address of the ioBroker there, optional with :port (default 8102). Key = the access key set there.": "Other sites whose shared data points should appear here (under bruecke.0.<site>.…). Address = VPN address of the ioBroker there, optional with :port (default 8102). Key = the access key set there.",
+  "Name": "Name",
+  "Address": "Address"
+}

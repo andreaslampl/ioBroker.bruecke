@@ -1,0 +1,90 @@
+{
+  "common": {
+    "name": "bruecke",
+    "version": "0.1.0",
+    "news": {
+      "0.1.0": {
+        "en": "First version: share chosen data points with other sites (read only or read + write), see the data points of other sites under bruecke.0.<site>, key with challenge, encrypted, reconnects by itself",
+        "de": "Erste Version: ausgewählte Datenpunkte für andere Standorte freigeben (nur lesen oder lesen + schalten), Datenpunkte anderer Standorte unter bruecke.0.<standort> sehen, Schlüssel mit Gegenprüfung, verschlüsselt, verbindet sich selbst neu"
+      }
+    },
+    "titleLang": {
+      "en": "Bridge between sites",
+      "de": "Brücke zwischen Standorten"
+    },
+    "desc": {
+      "en": "Pass chosen data points between ioBroker installations at different sites (e.g. over VPN): read only or read + write, encrypted, without MQTT broker",
+      "de": "Ausgewählte Datenpunkte zwischen ioBroker-Installationen an verschiedenen Standorten weitergeben (z. B. über VPN): nur lesen oder lesen + schalten, verschlüsselt, ohne MQTT-Broker"
+    },
+    "authors": [
+      "andreaslampl"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "icon": "bruecke.png",
+    "extIcon": "https://raw.githubusercontent.com/andreaslampl/ioBroker.bruecke/main/admin/bruecke.png",
+    "readme": "https://github.com/andreaslampl/ioBroker.bruecke/blob/main/README.md",
+    "enabled": true,
+    "type": "communication",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=6.0.0"
+      }
+    ],
+    "tier": 2
+  },
+  "native": {
+    "name": "",
+    "port": 8102,
+    "key": "",
+    "bind": "",
+    "shares": [],
+    "sites": []
+  },
+  "encryptedNative": [
+    "key"
+  ],
+  "protectedNative": [
+    "key",
+    "sites"
+  ],
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "All sites connected",
+          "de": "Alle Standorte verbunden"
+        },
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
+}
