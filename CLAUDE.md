@@ -31,6 +31,11 @@ against (shared DB, sites would depend on the VPN). Every site keeps running alo
 - 0.1.1 field: home -> salon "Opening handshake has timed out" (ws handshakeTimeout 10 s covers TCP connect too, so a
   dropped SYN / no listener behind a DROP firewall looks like this). 0.1.2 `explain()` in client.js gives German causes;
   the salon logs when it has no shares (server only starts with shares + key).
+- Field, confirmed: home -> salon connects. Cause of the timeout: home ioBroker is in the Smarthome VLAN, the IPsec
+  tunnel (FortiGate home <-> Fritzbox salon, Pi in the salon) only carried the main home LAN, so the Fritzbox never
+  routed replies back. Fix: FortiGate policy Smarthome VLAN -> tunnel, TCP 8102, NAT with an overload IP pool address
+  from the tunnelled home LAN (range "a-a" format). Owner had first entered the home ioBroker's own IP as bind address
+  in the salon (EADDRNOTAVAIL) - bind should stay empty.
 - Possible later: SmartView `fillAlarm()` only knows `spc-edp.N` / `nox_alarmzentrale.N` prefixes - mirrored alarm points
   (`bruecke.0.<site>.spc-edp.0.areas.N.*`) must be picked by hand in the tile.
 
