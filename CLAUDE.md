@@ -28,6 +28,9 @@ against (shared DB, sites would depend on the VPN). Every site keeps running alo
 - 0.1.1: owner did not want to type ids -> shares column objectId with customFilter state/channel/device/folder;
   `expandFolders()` turns a non-state id into `id.*`; patterns sorted longer first (more specific folder wins).
   The admin picker with folders was not checked in a real admin.
+- 0.1.1 field: home -> salon "Opening handshake has timed out" (ws handshakeTimeout 10 s covers TCP connect too, so a
+  dropped SYN / no listener behind a DROP firewall looks like this). 0.1.2 `explain()` in client.js gives German causes;
+  the salon logs when it has no shares (server only starts with shares + key).
 - Possible later: SmartView `fillAlarm()` only knows `spc-edp.N` / `nox_alarmzentrale.N` prefixes - mirrored alarm points
   (`bruecke.0.<site>.spc-edp.0.areas.N.*`) must be picked by hand in the tile.
 

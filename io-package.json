@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "bruecke",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "news": {
+      "0.1.2": {
+        "en": "Clearer connection errors (no answer / refused / other program on the port / DNS); log line when a site shares nothing",
+        "de": "Verständlichere Verbindungsfehler (keine Antwort / abgelehnt / anderes Programm auf dem Port / DNS); Log-Zeile, wenn ein Standort nichts freigibt"
+      },
       "0.1.1": {
         "en": "Shares: choose data points and whole folders / channels / devices in the object tree (a folder shares everything below it); the more specific folder wins",
         "de": "Freigaben: Datenpunkte und ganze Ordner / Kanäle / Geräte im Objektbaum auswählen (ein Ordner gibt alles darunter frei); der genauere Ordner gewinnt"

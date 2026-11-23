@@ -82,6 +82,8 @@ class Bruecke extends utils.Adapter {
             } else {
                 await this.startServer(port, key);
             }
+        } else {
+            this.log.info('Keine Freigaben - andere Standorte können sich mit diesem Standort nicht verbinden (nur nötig, wenn hier etwas freigegeben wird)');
         }
         await this.startSites(port);
         if (!this.shares.length && !this.sites.size) {

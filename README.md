@@ -78,6 +78,9 @@ Liste gelöscht, werden seine Datenpunkte hier gelöscht.
 
 ## Changelog
 
+### 0.1.2
+- Verständlichere Verbindungsfehler
+
 ### 0.1.1
 - Freigaben im Objektbaum auswählen, auch ganze Ordner / Kanäle / Geräte
 

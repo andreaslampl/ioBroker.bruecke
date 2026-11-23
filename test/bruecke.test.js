@@ -79,6 +79,13 @@ test('protocol: names, shares, sites, addresses', () => {
     assert.equal(bad.length, 3);
 });
 
+test('client: connection errors explained', () => {
+    const { explain } = require('../lib/client');
+    assert.match(explain(new Error('Opening handshake has timed out')), /keine Antwort/);
+    assert.match(explain(Object.assign(new Error('x'), { code: 'ECONNREFUSED' })), /abgelehnt/);
+    assert.match(explain(new Error('Unexpected server response: 404')), /anderes Programm/);
+});
+
 test('protocol: handshake macs, encryption, replay and forgery refused', () => {
     const nonce = 'a'.repeat(32);
     const cnonce = 'b'.repeat(32);
